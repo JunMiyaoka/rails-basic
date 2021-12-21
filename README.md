@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 環境構築（初回のみ）
+```
+docker-compose build
+docker-compose run web rails db:create
+docker-compose run web rails db:migrate
+```
 
-Things you may want to cover:
+## 開発サーバー立ち上げ
+```
+docker-compose up
+```
+をした状態で http://localhost:3000/
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発中の操作
+docker-compose upしていない場合はexecをrunに置き換え
+### Gemfile追加
+```
+docker-compose exec web bundle install
+```
+### DBリセット
+```
+docker-compose exec web rails db:migrate:reset
+```
